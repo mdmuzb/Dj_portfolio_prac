@@ -1,0 +1,10 @@
+<h1>Home page MDM</h1>
+
+{% for prj in projects %}
+<h2>{{ prj.title }}</h2>
+<p>{{ prj.description }}</p>
+<img src="{{ prj.image.url }}">
+{% if prj.url %}
+   <br><a href=" {{ prj.url }} " target="_blank">Link</a> </<br>
+{% endif %}
+{% endfor %}
