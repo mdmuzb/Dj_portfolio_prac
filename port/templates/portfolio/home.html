@@ -1,10 +1,38 @@
-<h1>Home page MDM</h1>
+{% extends 'portfolio/base.html' %}
+{% load static %}
+{% block content %}
 
-{% for prj in projects %}
-<h2>{{ prj.title }}</h2>
-<p>{{ prj.description }}</p>
-<img src="{{ prj.image.url }}">
-{% if prj.url %}
-   <br><a href=" {{ prj.url }} " target="_blank">Link</a> </<br>
-{% endif %}
-{% endfor %}
+<div class="row justify-content-center my-3">
+  <div class="col-5">
+    <img src="{% static 'pics/сканер_штрих.jpg' %}" class="img-fluid">
+  </div>
+</div>
+
+<div class="row justify-content-center mb-3">
+  <div class="col-md-9 text-center">
+    <h1 id="hometext" class="font-weight-bold">Это мое первое реальное практикческая работа по Жанго 😊</h1>
+  </div>
+</div>
+
+<h2 class="mt-5">Portfolio</h2>
+<hr>
+<div class="row">
+  {% for prj in projects %}
+  <div class="col-lg-4 col-md-6">
+
+    {% if prj.url %}
+    <a href="{{ prj.url }}">
+      <img src="{{ prj.image.url }}" class="img-fluid mb-2">
+    </a>
+    {% else %}
+
+    <img src="{{ prj.image.url }}" class="img-fluid mb-2">
+    {% endif %}
+    <h3>{{ prj.title }}</h3>
+    <p>{{ prj.description }}</p>
+
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}
